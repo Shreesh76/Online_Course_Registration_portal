@@ -1,0 +1,129 @@
+{% extends "nav.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <section class="grey section">
+        <div class="container">
+            <div class="row">
+                <div id="content" class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="blog-wrapper">
+                        <div class="row second-bread">
+                            <div class="col-md-6 text-left">
+                                <h1>Cart & Checkout Details</h1>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <div class="bread">
+                                    <ol class="breadcrumb">
+                                        <li>
+                                            <a href="#">Home</a>
+                                        </li>
+                                        <li class="active">Checkout</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-wrapper">
+                        <div class="blog-desc">
+                            <div class="shop-cart">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Name
+                                            </th>
+                                            <th>
+                                                Details
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                Course Name
+                                            </td>
+                                            <td>
+                                                {{ obj.name }}
+                                            </td>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Price
+                                        </td>
+                                        <td>
+                                            {{ obj.fee }}
+                                        </td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Instructor
+                                    </td>
+                                    <td>
+                                        {{ obj.teacher }}
+                                    </td>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Course Period
+                                </td>
+                                <td>
+                                    {{ obj.time_to_cover }}
+                                </td>
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <hr class="invis">
+                <div class="payment-check">
+                    <p>
+                        <strong>Select Payment Method</strong>
+                    </p>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox">
+                            Paypal
+                        </label>
+                        &nbsp;&nbsp;
+                        <label>
+                            <input type="checkbox">
+                            Credit Cart
+                        </label>
+                        &nbsp;&nbsp;
+                        <label>
+                            <input type="checkbox">
+                            Test Payment
+                        </label>
+                    </div>
+                </div>
+
+                <form action="{% url 'done' %}" method="POST">
+                    {% csrf_token %}
+                    <button
+                        type="submit"
+                        name="post_id"
+                        value="{{ obj.id }}"
+                        class="btn btn-primary">Pay Now</button>
+
+                </form>
+
+            </div>
+            <hr class="invis">
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+{% endblock content %}
